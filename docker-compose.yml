@@ -1,4 +1,4 @@
-version: '3.9'
+version: '3.5'
 services:
   web:
     build: .
@@ -34,7 +34,8 @@ services:
       - my_db:/var/lib/mysql
 # Names our volume
 volumes:
-  my_db:
+    my_db:
 
 networks:
     my_network:
+        driver: bridge
