@@ -13,6 +13,7 @@ from src.models import User
 def token_required(func):
     @wraps(func)
     def decorated(*args, **kwargs):
+        """Checks if user has a valid token to access protected routes"""
         token = None
 
         if 'Authorization' in request.headers:

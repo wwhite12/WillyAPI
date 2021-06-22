@@ -7,8 +7,8 @@ from flask_sqlalchemy import SQLAlchemy
 # Custom imports
 from src import app
 
-app.config['SECRET_KEY'] = 'asdfqwefqewqev'
-app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql://root:rootpassword@willyapi_db_1:3306/management"
+app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
+app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('SQLALCHEMY_DATABASE_URI')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 
 db = SQLAlchemy(app)

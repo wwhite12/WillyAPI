@@ -14,11 +14,11 @@ class User(db.Model):
     email = db.Column(db.String(70), unique=True)
     password = db.Column(db.String(2000))
 
-# class Info(db.Model):
-#     __tablename__ = 'Info'
-#     id = db.Column(db.Integer, primary_key=True)
-#     category = db.Column(db.String(50), unique=True)
-#     description = db.Column(db.String(2000))
+class Info(db.Model):
+    __tablename__ = 'Info'
+    id = db.Column(db.Integer, primary_key=True)
+    category = db.Column(db.String(50), unique=True)
+    description = db.Column(db.String(2000))
 
 class Insults(db.Model):
     __tablename__ = 'Insults'
@@ -30,9 +30,3 @@ class Funfacts(db.Model):
     __tablename__ = 'Facts'
     id = db.Column(db.Integer, primary_key=True)
     fact = db.Column(db.String(5000))
-
-# class About(db.Model):
-#     __tablename__ = 'About'
-#     id = db.Column(db.Integer, primary_key=True)
-#     prog_language = db.Column(db.String(50))
-#     why_programming = db.Column(db.String(5000))

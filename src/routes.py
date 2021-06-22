@@ -18,13 +18,13 @@ def welcome_message():
 
     return jsonify({
         'message': 'Welcome to WillyAPI!',
-        'instructions': 'If you are new to this API please read the documentation',
-        'documentation': 'insert link'
+        'instructions': 'If you are new to this API please read the documentation'
     }), 200
 
 
 @app.route('/signup', methods=['POST'])
 def signup_for_api():
+    """add credentials to DB"""
     data = request.form
 
     name, email = data.get('name'), data.get('email')
@@ -51,6 +51,7 @@ def signup_for_api():
 
 @app.route('/login', methods=['POST'])
 def get_token():
+    """get token"""
     auth = request.form
 
     if not auth or not auth.get('email') or not auth.get('password'):
@@ -80,6 +81,7 @@ def get_token():
 @app.route('/insults', methods=['GET', 'POST'])
 @token_required
 def insults(current_user):
+    """Show insults or post a new one"""
     if request.method == 'GET':
         insults = Insults.query.all()
 
@@ -126,15 +128,3 @@ def show_gym_stats(current_user):
         return jsonify({
             'Fun Facts': output
         }), 200
-    
-    if request.method == 'POST' and current_user.email == 'willy123@gmail.com':
-        data = request.data
-
-        fact = Funfacts(
-            fact = data
-        )
-
-        db.session.add(fact)
-        db.session.commit()
-
-        return make_response(f"Well done Willy")
